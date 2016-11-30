@@ -37,11 +37,37 @@ CONSTRAINT cennik_FK FOREIGN KEY(id_cennika) REFERENCES Cenniki(idCennik)
 
 CREATE TABLE Sprzet
 (
-id_sprzetu INT IDENTITY(1,1) CONSTRAINT Sprzet_PK PRIMARY KEY,
+id_sprzetu INT IDENTITY(1,1) CONSTRAINT sprzet_PK PRIMARY KEY,
 id_kat INT not null,
 nazwa VARCHAR(20) NOT NULL,
 stan VARCHAR(20) NOT NULL,
 sprawnosc VARCHAR(40) NOT NULL,
 opis VARCHAR(255),
 CONSTRAINT kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategoria(id_kategorii)
+)
+
+CREATE TABLE Wypozyczenie
+(
+id_wypozyczenia INT IDENTITY(1,1) CONSTRAINT wypozyczenie_PK PRIMARY KEY,
+data_wypozyczenia TIMESTAMP NOT NULL,
+data_zwrotu TIMESTAMP NOT NULL, 
+CONSTRAINT wypoz_check_daty CHECK(data_wypozyczenia < data_zwrotu)
+)
+
+CREATE TABLE Rezerwacja
+(
+id_rezerwacji INT IDENTITY(1,1) CONSTRAINT rezerwacja_PK PRIMARY KEY,
+status_rezerwacji VARCHAR(40),
+czy_oplacona BIT NOT NULL,
+od_terminu TIMESTAMP NOT NULL,
+do_terminu TIMESTAMP NOT NULL,
+CONSTRAINT rezerw_check_daty  CHECK(od_terminu < do_terminu)
+)
+
+CREATE TABLE Rezerwacja_Sprzet
+(
+id_rezerwacji INT NOT NULL,
+id_sprzetu INT NOT NULL,
+CONSTRAINT rezerwacja_FK FOREIGN KEY(id_rezerwacji) REFERENCES Rezerwacja(id_rezerwacji),
+CONSTRAINT sprzet_FK FOREIGN KEY(id_sprzetu) REFERENCES Sprzet(id_sprzetu) 
 )
