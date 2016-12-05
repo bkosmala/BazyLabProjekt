@@ -34,7 +34,7 @@ CONSTRAINT CennikZnizki_Cennik_FK FOREIGN KEY(id_Cennik) REFERENCES Cenniki(id_C
 CREATE TABLE Kategorie_Sprzetu 
 (
 id_kategorii INT IDENTITY(1,1) CONSTRAINT kategoria_PK PRIMARY KEY,
-id_cennika INT not null,
+id_cennika INT null,
 nazwa_kat VARCHAR(40) NOT NULL,
 CONSTRAINT Kategorie_Sprzetu_cennik_FK FOREIGN KEY(id_cennika) REFERENCES Cenniki(id_Cennik)
 )
