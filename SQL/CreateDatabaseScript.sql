@@ -1,3 +1,4 @@
+if exists(select 1 from master.dbo.sysdatabases where name = 'CentrumSportu') drop database CentrumSportu
 CREATE DATABASE CentrumSportu;
 GO
 USE CentrumSportu
