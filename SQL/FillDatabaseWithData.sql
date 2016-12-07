@@ -5,13 +5,35 @@ GO
 -- bardziej w sensie rodzaj ni¿ kategoria, np: 
 -- sprzêt w kategorii pi³ki do siatkówki, to bedzie ileœ tam takich samych pi³ek, tylko o innym id
 
-INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki do siatkówki');
-INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki do gry w pi³kê no¿n¹');
-INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki do koszykówki');
-INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki do gry w pi³kê rêczn¹');
+INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki');
+
 
 --********************* Tabela Sprzet
 -- stany: wolna, rezerwacja, wypo¿yczenie, wypo¿yczenie-rezerwacja
 -- sprawnosc: sprawna, uszkodzona,
 
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka zwyk³a','wolna','sprawna','Zakupiona w 2016 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','wolna','sprawna','Zakupiona w 2016 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','wolna','sprawna',Null);
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','wolna','sprawna','Zakupiona w 2016 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','wolna','uszkodzona','Uchodzi powietrze');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','wolna','sprawna','Zakupiona w 2015 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','wolna','sprawna',Null);
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','wolna','uszkodzona','Starta powierzchnia');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki rêcznej','wolna','sprawna',null);
+
+--********************* Tabela Rezerwacje
+
+
+--********************* Tabela Rezerwacja_Sprzet
+
+
+--********************* Tabela Wypozyczenia
+
+
+--********************* Tabela Cennik ?
+
+
+--********************* Tabela CennnikZnizki ?
+
+
+--********************* Tabela Znizki ?
