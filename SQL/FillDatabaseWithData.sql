@@ -22,7 +22,9 @@ INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','wolna','uszkodzona','S
 INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki rêcznej','wolna','sprawna',null);
 
 --********************* Tabela Rezerwacje
-
+-- status: 
+-- typ rezerwacji
+-- INSERT INTO dbo.Sprzet VALUES (1,'status',0,'2016-12-07 13:01','2016-12-14 13:01',null,'typ_rezerwacji');
 
 --********************* Tabela Rezerwacja_Sprzet
 
