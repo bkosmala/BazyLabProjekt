@@ -6,6 +6,12 @@ GO
 -- sprzêt w kategorii pi³ki do siatkówki, to bedzie ileœ tam takich samych pi³ek, tylko o innym id
 
 INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki');
+INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Akcesoria p³ywackie');
+INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Rakietki');
+INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Akcesoria do wspinaczki');
+INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki');
+INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Pi³ki');
+
 
 
 --********************* Tabela Sprzet
