@@ -34,8 +34,17 @@ INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do tenisa sto³owego', 'dostêpny', 1,
 --********************* Tabela Rezerwacje
 -- status: 
 -- typ rezerwacji
--- INSERT INTO dbo.Sprzet VALUES (1,'status',0,'2016-12-07 13:01','2016-12-14 13:01',null,'typ_rezerwacji');
-
+-- INSERT INTO dbo.Sprzet VALUES (1,'status',0,'2016-12-07 13:01','2016-12-14 13:01',null);
+INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null);
+INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null);
+INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null);
+INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null);
+INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null);
+INSERT INTO dbo.Sprzet VALUES ('anulowana', 0, '2016-02-20 10:00', '2016-02-20 13:00', null);
+INSERT INTO dbo.Sprzet VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', null);
+INSERT INTO dbo.Sprzet VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', null);
+INSERT INTO dbo.Sprzet VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 13:00', null);
+ 
 --********************* Tabela Rezerwacja_Sprzet
 
 
