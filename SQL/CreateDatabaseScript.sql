@@ -19,6 +19,7 @@ waluta varchar(3) not null,
 data_utworzenia datetime not null,
 data_modyfikacji datetime null,
 nazwa varchar(100) null,
+opis varchar(250) null,
 CONSTRAINT cena_nie_ujemna CHECK(cena_Podstawowa>=0),
 CONSTRAINT cennik_check_daty CHECK(data_utworzenia < isnull(data_modyfikacji,dateadd(y,1,data_utworzenia)))
 )
@@ -34,7 +35,7 @@ CONSTRAINT CennikZnizki_Cennik_FK FOREIGN KEY(id_Cennik) REFERENCES Cenniki(id_C
 CREATE TABLE Kategorie_Sprzetu 
 (
 id_kategorii INT IDENTITY(1,1) CONSTRAINT kategoria_PK PRIMARY KEY,
-id_cennika INT null,
+id_cennika INT null, 
 nazwa_kat VARCHAR(40) NOT NULL,
 CONSTRAINT Kategorie_Sprzetu_cennik_FK FOREIGN KEY(id_cennika) REFERENCES Cenniki(id_Cennik)
 )
@@ -67,7 +68,7 @@ czy_oplacona BIT NOT NULL,
 data_rezerwacji DATETIME NOT NULL,
 waznosc_do DATETIME NOT NULL,
 id_wypozyczenia INT NULL,
-typ_rezerwacji varchar(30) not null,
+--typ_rezerwacji varchar(30) not null, -- wyrzucone, w celu uproszcenia - zrobione do IO
 CONSTRAINT rezerw_check_daty  CHECK(data_rezerwacji < waznosc_do),
 CONSTRAINT Rezerwacje_Wypozyczenie_FK FOREIGN KEY(id_wypozyczenia) REFERENCES Wypozyczenia(id_wypozyczenia)
 )
