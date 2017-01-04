@@ -15,7 +15,7 @@ INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Akcesoria do wspinaczki');
 -- stany: dostêpny, wypo¿yczony
 -- sprawnosc: BOOLEAN
 
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','',1,'Zakupiona w 2016 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','dostêpny',1,'Zakupiona w 2016 roku');
 INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','dostêpny',1,Null);
 INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','dostêpny',1,'Zakupiona w 2016 roku');
 INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','dostêpny',0,'Uchodzi powietrze');
