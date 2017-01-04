@@ -1,3 +1,4 @@
+if exists(select 1 from master.dbo.sysdatabases where name = 'CentrumSportu') drop database CentrumSportu
 CREATE DATABASE CentrumSportu;
 GO
 USE CentrumSportu
@@ -46,7 +47,7 @@ id_sprzetu INT IDENTITY(1,1) CONSTRAINT sprzet_PK PRIMARY KEY,
 id_kat INT not null,
 nazwa VARCHAR(30) NOT NULL,
 stan VARCHAR(30) NULL,
-sprawnosc VARCHAR(40) NULL,
+sprawnosc BIT NULL,
 opis VARCHAR(255) NULL,
 CONSTRAINT Sprzet_kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategorie_Sprzetu(id_kategorii)
 )
