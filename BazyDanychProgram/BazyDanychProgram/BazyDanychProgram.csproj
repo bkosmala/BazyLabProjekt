@@ -69,7 +69,12 @@
     </Compile>
     <Compile Include="Database\DatabaseOperations.cs" />
     <Compile Include="Database\Extensions.cs" />
+    <Compile Include="Database\Models\Rezerwacja - Copy.cs" />
+    <Compile Include="Database\Models\RezerwacjaSprzet.cs" />
+    <Compile Include="Database\Models\Rezerwacja.cs" />
+    <Compile Include="Database\Models\Wypozyczenia.cs" />
     <Compile Include="Database\Models\Sprzet.cs" />
+    <Compile Include="Logic.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
