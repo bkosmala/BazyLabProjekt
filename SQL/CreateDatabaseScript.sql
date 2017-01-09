@@ -49,7 +49,8 @@ nazwa VARCHAR(30) NOT NULL,
 stan VARCHAR(30) NULL,
 sprawnosc BIT NULL,
 opis VARCHAR(255) NULL,
-CONSTRAINT Sprzet_kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategorie_Sprzetu(id_kategorii)
+CONSTRAINT Sprzet_kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategorie_Sprzetu(id_kategorii),
+CHECK (stan in ('dostêpny', 'wypo¿yczony'))
 )
 
 CREATE TABLE Wypozyczenia

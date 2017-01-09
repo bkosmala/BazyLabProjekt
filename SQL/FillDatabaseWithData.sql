@@ -11,23 +11,24 @@ INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Rakietki');
 INSERT INTO dbo.Kategorie_Sprzetu VALUES (NULL,'Akcesoria do wspinaczki');
 
 --********************* Tabela Sprzet
--- stany: wolna, rezerwacja, wypo¿yczenie, wypo¿yczenie-rezerwacja
--- sprawnosc: sprawna, uszkodzona,
 
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','wolna',1,'Zakupiona w 2016 roku');
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','wolna',1,Null);
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','wolna',1,'Zakupiona w 2016 roku');
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','wolna',0,'Uchodzi powietrze');
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','wolna',1,'Zakupiona w 2015 roku');
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','wolna',1,Null);
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','wolna',0,'Starta powierzchnia');
-INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki rêcznej','wolna',1,null);
-INSERT INTO dbo.Sprzet VALUES (2, 'Okulary p³ywackie', 'wolna', 1, null);
-INSERT INTO dbo.Sprzet VALUES (2, 'Maska p³ywacka', 'wolna', 1, null)
-INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do squasha', 'wolna', 1, null);
-INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do squasha', 'wolna', 1, null);
-INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do badmintona', 'wolna', 1, null);
-INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do tenisa sto³owego', 'wolna', 1, null);
+-- stany: dostêpny, wypo¿yczony
+-- sprawnosc: BOOLEAN
+
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','dostêpny',1,'Zakupiona w 2016 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','dostêpny',1,Null);
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do siatkówki','dostêpny',1,'Zakupiona w 2016 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','dostêpny',0,'Uchodzi powietrze');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do koszykówki','dostêpny',1,'Zakupiona w 2015 roku');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','dostêpny',1,Null);
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki no¿nej','dostêpny',0,'Starta powierzchnia');
+INSERT INTO dbo.Sprzet VALUES (1,'Pi³ka do pi³ki rêcznej','dostêpny',1,null);
+INSERT INTO dbo.Sprzet VALUES (2, 'Okulary p³ywackie', 'dostêpny', 1, null);
+INSERT INTO dbo.Sprzet VALUES (2, 'Maska p³ywacka', 'dostêpny', 1, null)
+INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do squasha', 'dostêpny', 1, null);
+INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do squasha', 'dostêpny', 1, null);
+INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do badmintona', 'dostêpny', 1, null);
+INSERT INTO dbo.Sprzet VALUES (3, 'Rakietka do tenisa sto³owego', 'dostêpny', 1, null);
 
 
 --********************* Tabela Rezerwacje
