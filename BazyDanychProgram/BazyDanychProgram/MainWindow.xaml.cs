@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BazyDanychProgram.Database;
+using BazyDanychProgram.Database.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,9 @@ namespace BazyDanychProgram
         public MainWindow()
         {
             InitializeComponent();
+
+            List<Sprzet> abracadabra = DatabaseOperations.GetCollectionSQL<Sprzet>("Select * from [dbo].[Sprzet]");
+            List<string> abracadabra2 = DatabaseOperations.GetCollectionSQL<string>("Select nazwa from [dbo].[Sprzet]");
         }
     }
 }
