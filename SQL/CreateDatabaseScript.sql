@@ -3,7 +3,7 @@ CREATE DATABASE CentrumSportu;
 GO
 USE CentrumSportu
 GO
-
+/*
 CREATE TABLE Znizki
 (
 id_Znizka INT IDENTITY(1,1) CONSTRAINT Znizki_PK PRIMARY KEY,
@@ -31,26 +31,29 @@ id_Znizka int not null,
 id_Cennik int not null,
 CONSTRAINT CennikZnizki_Znizka_FK FOREIGN KEY(id_Znizka) REFERENCES Znizki(id_Znizka), 
 CONSTRAINT CennikZnizki_Cennik_FK FOREIGN KEY(id_Cennik) REFERENCES Cenniki(id_Cennik)
-)
+)*/
 
-CREATE TABLE Kategorie_Sprzetu 
+-- kategorie mog¹ teraz mieæ podkategorie - wszystko razem w jednej tabeli - materia³ do ciekawych zapytañ
+CREATE TABLE Kategorie 
 (
 id_kategorii INT IDENTITY(1,1) CONSTRAINT kategoria_PK PRIMARY KEY,
-id_cennika INT null, 
+id_kategoria_nadrzedna INT null,
+--id_cennika INT null, 
 nazwa_kat VARCHAR(40) NOT NULL,
-CONSTRAINT Kategorie_Sprzetu_cennik_FK FOREIGN KEY(id_cennika) REFERENCES Cenniki(id_Cennik)
+--CONSTRAINT Kategorie_Sprzetu_cennik_FK FOREIGN KEY(id_cennika) REFERENCES Cenniki(id_Cennik)
+CONSTRAINT Kategorie_Podkategorie_FK FOREIGN KEY(id_kategoria_nadrzedna) REFERENCES Kategorie(id_kategorii) -- rekurencja
 )
 
 CREATE TABLE Sprzet
 (
 id_sprzetu INT IDENTITY(1,1) CONSTRAINT sprzet_PK PRIMARY KEY,
 id_kat INT not null,
-nazwa VARCHAR(30) NOT NULL,
-stan VARCHAR(30) NULL,
+nazwa VARCHAR(50) NOT NULL,
+data_zakupu date not NULL,
+cena_zakupu decimal(9,2) null,
 sprawnosc BIT NULL,
-opis VARCHAR(255) NULL,
-CONSTRAINT Sprzet_kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategorie_Sprzetu(id_kategorii),
-CHECK (stan in ('dostêpny', 'wypo¿yczony'))
+CONSTRAINT Sprzet_kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategorie(id_kategorii),
+CONSTRAINT sprzet_check_cena_zakupu CHECK( cena_zakupu>0)
 )
 
 CREATE TABLE Wypozyczenia

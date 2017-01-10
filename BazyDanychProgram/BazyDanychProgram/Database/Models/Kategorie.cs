@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace BazyDanychProgram.Database.Models
 {
-    public class KategorieSprzetu
+    public class Kategorie
     {
         public int id_kategorii { get; set; }
         public int id_cennika { get; set; }
         public string nazwa_kat { get; set; }
 
-        public KategorieSprzetu()
+        public Kategorie()
         { }
     }
 }
