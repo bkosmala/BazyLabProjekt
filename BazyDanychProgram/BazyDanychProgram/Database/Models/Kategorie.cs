@@ -9,7 +9,7 @@ namespace BazyDanychProgram.Database.Models
     public class Kategorie
     {
         public int id_kategorii { get; set; }
-        public int id_cennika { get; set; }
+        public int id_kategoria_nadrzedna { get; set; }
         public string nazwa_kat { get; set; }
 
         public Kategorie()
