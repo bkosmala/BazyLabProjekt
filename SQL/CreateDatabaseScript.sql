@@ -75,7 +75,8 @@ waznosc_do DATETIME NOT NULL,
 id_wypozyczenia INT NULL,
 --typ_rezerwacji varchar(30) not null, -- wyrzucone, w celu uproszcenia - zrobione do IO
 CONSTRAINT rezerw_check_daty  CHECK(data_rezerwacji < waznosc_do),
-CONSTRAINT Rezerwacje_Wypozyczenie_FK FOREIGN KEY(id_wypozyczenia) REFERENCES Wypozyczenia(id_wypozyczenia)
+CONSTRAINT Rezerwacje_Wypozyczenie_FK FOREIGN KEY(id_wypozyczenia) REFERENCES Wypozyczenia(id_wypozyczenia),
+CHECK (status_rezerwacji in ('oczekuj¹ca', 'anulowana', 'zrealizowana'))
 )
 
 CREATE TABLE Rezerwacja_Sprzet
