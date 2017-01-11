@@ -74,5 +74,7 @@ join dbo.Kategorie as t2 on t1.id_kat=t2.id_kategorii
 -- liczba sprzêtu zakupionego w sierpniu roku 2015
 select count(id_sprzetu) as 'iloœæ' from dbo.Sprzet where datepart(year,data_zakupu) = 2015 and datepart(month,data_zakupu) = 8
 
-
-select * from Rezerwacje
+--dalej np lista dostêpnego sprzêtu w wybranej kategorii, ze sprawdzeniem czy istnieje rezerwacja zaczynaj¹ca siê
+-- w okresie 3 dni do przodu
+--  sprzêt, który nigdy nie by³ wypo¿yczony (móg³ byæ zarezerwowany itp)
+--itd
