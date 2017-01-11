@@ -100,25 +100,26 @@ INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu TS','2016-12-19',48.99,1)
 INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-02-19',75.99,1)
 INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-03-19',68.99,1)
 
+--********************* Tabela Wypozyczenia
+INSERT INTO dbo.Wypozyczenia VALUES('2016-03-16 10:05', '2016-03-16 10:58', null);
+INSERT INTO dbo.Wypozyczenia VALUES('2016-03-20 10:02', '2016-03-20 11:01', null);
 
 --********************* Tabela Rezerwacje
 -- status: 
 -- typ rezerwacji
 -- INSERT INTO dbo.Sprzet VALUES (1,'status',0,'2016-12-07 13:01','2016-12-14 13:01',null);
-INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null);
-INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null);
-INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null);
-INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null);
-INSERT INTO dbo.Sprzet VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null);
-INSERT INTO dbo.Sprzet VALUES ('anulowana', 0, '2016-02-20 10:00', '2016-02-20 13:00', null);
-INSERT INTO dbo.Sprzet VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', null);
-INSERT INTO dbo.Sprzet VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', null);
-INSERT INTO dbo.Sprzet VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-02-20 10:00', '2016-02-20 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', 1);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', 2);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 13:00', null);
  
 --********************* Tabela Rezerwacja_Sprzet
 
-
---********************* Tabela Wypozyczenia
 
 
 --********************* Tabela Cennik ?
@@ -128,3 +129,5 @@ INSERT INTO dbo.Sprzet VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 1
 
 
 --********************* Tabela Znizki ?
+
+select * from Rezerwacje

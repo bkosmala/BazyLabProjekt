@@ -2,6 +2,7 @@
 
 --1
 -- ID i nazwy kategorii wysokiego poziomu bez podkategorii posortowane rosn¹co wzglêdem nazwy
+use CentrumSportu
 
 Select id_kategorii, nazwa_kat from dbo.Kategorie as t1
  where id_kategoria_nadrzedna is null and
@@ -74,3 +75,4 @@ join dbo.Kategorie as t2 on t1.id_kat=t2.id_kategorii
 select count(id_sprzetu) as 'iloœæ' from dbo.Sprzet where datepart(year,data_zakupu) = 2015 and datepart(month,data_zakupu) = 8
 
 
+select * from Rezerwacje
