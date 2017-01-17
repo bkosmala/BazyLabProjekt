@@ -111,3 +111,68 @@ select id_klienta, nazwisko from Klient where id_klienta in
 (select id_klienta from Rezerwacje r where id_wypozyczenia is not null and 
 (select sum(s.cena_zakupu) from Rezerwacja_Sprzet rs left join Sprzet s on rs.id_sprzetu=s.id_sprzetu 
 where r.id_rezerwacji=rs.id_rezerwacji) > 200 )
+
+
+
+-- WYZWALACZE
+
+-- jedna osoba nie moze utworzyc wiecej niz 5 rezerwacji
+GO
+CREATE TRIGGER sprawdzRezerwacje on dbo.Rezerwacje
+INSTEAD OF INSERT 
+AS 
+BEGIN
+	DECLARE @ile INT
+	DECLARE @idKlienta INT
+	SET @ile = 0
+	SELECT @idKlienta=id_klienta FROM inserted
+	SELECT @ile = count(*) FROM Rezerwacje WHERE @idKlienta=id_klienta and id_wypozyczenia is null
+	print @ile
+	IF @ile > 4
+	BEGIN
+		print 'niepowodzenie - limit rezerwacji zostal osiagniety'
+	END
+	ELSE 
+	BEGIN
+		INSERT INTO Rezerwacje(status_rezerwacji,czy_oplacona, data_rezerwacji, waznosc_do, id_wypozyczenia, id_klienta) 
+		SELECT status_rezerwacji, czy_oplacona, data_rezerwacji, waznosc_do, id_wypozyczenia, id_klienta FROM inserted
+	END
+END	
+
+GO
+
+-- zwrocenie sprzetu
+
+-- PROCEDURY
+-- podnies cene sprzetu z danej kategorii o x procent
+GO
+CREATE PROCEDURE podniesCeneWypozyczeniaSprzetuZKat
+(
+	@procent INT,
+	@id_kategorii INT
+)
+AS
+BEGIN
+	UPDATE Sprzet SET cena_za_godzine = cena_za_godzine + cena_za_godzine * @procent where id_kat=@id_kategorii
+END
+
+
+-- FUNKCJE
+
+--zwroc zysk ze wszystkich wypozyczen klienta o zadanym id
+GO
+CREATE FUNCTION zwrocZyskZKlienta
+(
+	@id_klienta INT
+)
+RETURNS DECIMAL(9,2)
+AS
+BEGIN
+	DECLARE @calkowity_zysk Decimal(9,2)
+	SELECT @calkowity_zysk=sum((datediff(minute, data_wypozyczenia, data_zwrotu)/60+1)*s.cena_za_godzine) from Wypozyczenia w left join Rezerwacje r on w.id_wypozyczenia=r.id_wypozyczenia 
+	left join Rezerwacja_Sprzet rs on rs.id_rezerwacji=r.id_rezerwacji 
+	left join Sprzet s on rs.id_sprzetu=s.id_sprzetu where r.id_klienta=@id_klienta
+	RETURN @calkowity_zysk
+END
+
+go
