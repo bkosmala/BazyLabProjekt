@@ -78,6 +78,15 @@ CREATE TABLE Wypozyczenia
 
 GO
 
+CREATE TABLE Klient 
+(
+	id_klienta INT IDENTITY(1,1) CONSTRAINT klient_PK PRIMARY KEY,
+	imie varchar(40) not null,
+	nazwisko varchar(255) not null, 
+)
+
+GO
+
 CREATE TABLE Rezerwacje
 (
 	id_rezerwacji INT IDENTITY(1,1) CONSTRAINT rezerwacja_PK PRIMARY KEY,
@@ -86,9 +95,11 @@ CREATE TABLE Rezerwacje
 	data_rezerwacji DATETIME NOT NULL,
 	waznosc_do DATETIME NOT NULL,
 	id_wypozyczenia INT NULL,
+	id_klienta INT not null,
 	--typ_rezerwacji varchar(30) not null, -- wyrzucone, w celu uproszcenia - zrobione do IO
 	CONSTRAINT rezerw_check_daty  CHECK(data_rezerwacji < waznosc_do),
 	CONSTRAINT Rezerwacje_Wypozyczenie_FK FOREIGN KEY(id_wypozyczenia) REFERENCES Wypozyczenia(id_wypozyczenia),
+	CONSTRAINT klient_FK FOREIGN KEY(id_klienta) REFERENCES Klient(id_klienta),
 	CHECK (status_rezerwacji in ('oczekuj¹ca', 'anulowana', 'zrealizowana'))
 )
 
@@ -203,31 +214,39 @@ INSERT INTO dbo.Wypozyczenia VALUES('2016-01-03 10:12', '2016-01-03 11:02', null
 INSERT INTO dbo.Wypozyczenia VALUES('2016-01-05 18:07', '2016-01-05 20:17', null);
 
 GO
+
+--********************* Tabela Klient
+INSERT INTO dbo.Klient VALUES ('Maciej', 'Olejniczak');
+INSERT INTO dbo.Klient VALUES ('Micha³', 'Kowalski');
+INSERT INTO dbo.Klient VALUES ('Adam', 'Kwiatkowski');
+INSERT INTO dbo.Klient VALUES ('Katarzyna', 'Siewierska');
+INSERT INTO dbo.Klient VALUES ('Oskar', 'Przyby³a');
+
 --********************* Tabela Rezerwacje
 -- status: 
 -- typ rezerwacji
 --INSERT INTO dbo.Rezerwacje VALUES ()
 
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', 1);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', 2);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 0, '2017-01-17 18:00', '2017-01-17 20:00', 3);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-12-29 10:00', '2016-12-29 13:00', 4);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-01-03 10:00', '2016-01-03 11:00', 5);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-01-05 18:00', '2016-01-05 20:00', 6);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', 1, 1);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', 2, 2);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 0, '2017-01-17 18:00', '2017-01-17 20:00', 3, 3);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-12-29 10:00', '2016-12-29 13:00', 4, 2);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-01-03 10:00', '2016-01-03 11:00', 5, 1);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-01-05 18:00', '2016-01-05 20:00', 6, 1);
 
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-19 10:00', '2017-01-19 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-20 12:00', '2017-01-20 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 10:00', '2017-01-25 12:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null, 2);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null, 4);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null, 5);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null, 5);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null, 1);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-19 10:00', '2017-01-19 13:00', null, 3);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-20 12:00', '2017-01-20 13:00', null, 5);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 10:00', '2017-01-25 12:00', null, 2);
 
-INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-02-20 10:00', '2016-02-20 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-12-20 10:00', '2016-12-20 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-01 10:00', '2017-03-01 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-02-20 10:00', '2016-02-20 13:00', null, 1);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 13:00', null, 2);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-12-20 10:00', '2016-12-20 13:00', null, 2);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-01 10:00', '2017-03-01 13:00', null, 3);
  
 GO
 --********************* Tabela Rezerwacja_Sprzet
@@ -242,6 +261,7 @@ INSERT INTO dbo.Rezerwacja_Sprzet VALUES(5, 1);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(6, 6);
 
 GO
+
 --********************* Tabela Cennik ?
 
 
@@ -252,4 +272,6 @@ GO
 
 --********************* Tabela Wypozyczenia
 
-select * from Sprzet
+select * from Sprzet;
+select * from Klient;
+select * from Rezerwacje r left join Klient k on r.id_klienta=k.id_klienta; 
