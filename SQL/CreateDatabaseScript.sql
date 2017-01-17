@@ -203,6 +203,8 @@ INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-12-19',48.99,1, 3.00
 INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu TS','2016-12-19',48.99,1, 3.00)
 INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-02-19',75.99,1, 5.00)
 INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-03-19',68.99,1, 4.00)
+INSERT INTO dbo.Sprzet VALUES (21,'tablica trenera1', '2015-01-12', 199.00,1, 20.00)
+INSERT INTO dbo.Sprzet VALUES (21,'tablica trenera2', '2015-01-12', 199.00,1, 20.00)
 
 GO
 --********************* Tabela Wypozyczenia
@@ -235,7 +237,7 @@ INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-01-03 10:00', '2016-
 INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-01-05 18:00', '2016-01-05 20:00', 6, 1);
 
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null, 2);
-INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null, 4);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null, 2);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null, 5);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null, 5);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null, 1);
@@ -251,7 +253,7 @@ INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-01 10:00', '2017-03-
 GO
 --********************* Tabela Rezerwacja_Sprzet
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 1);
-INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 6);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 2);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 11);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(2, 1);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(2, 3);
@@ -259,6 +261,8 @@ INSERT INTO dbo.Rezerwacja_Sprzet VALUES(3, 4);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(4, 4);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(5, 1);
 INSERT INTO dbo.Rezerwacja_Sprzet VALUES(6, 6);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(7, 38);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(8, 39);
 
 GO
 
@@ -275,3 +279,5 @@ GO
 select * from Sprzet;
 select * from Klient;
 select * from Rezerwacje r left join Klient k on r.id_klienta=k.id_klienta; 
+select * from Kategorie
+select * from Rezerwacja_Sprzet
