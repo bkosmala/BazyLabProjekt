@@ -14,5 +14,11 @@ namespace BazyDanychProgram.Database.Models
 
         public Kategorie()
         { }
+
+
+        public override string ToString()
+        {
+            return nazwa_kat;
+        }
     }
 }

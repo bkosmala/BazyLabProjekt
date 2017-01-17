@@ -68,7 +68,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Database\DatabaseOperations.cs" />
+    <Compile Include="Database\DataRepository.cs" />
     <Compile Include="Database\Extensions.cs" />
+    <Compile Include="Database\Models\SprzetWKategorii.cs" />
     <Compile Include="Database\Models\Rezerwacja.cs" />
     <Compile Include="Database\Models\RezerwacjaSprzet.cs" />
     <Compile Include="Database\Models\Kategorie.cs" />

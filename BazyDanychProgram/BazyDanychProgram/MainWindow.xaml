@@ -6,7 +6,80 @@
         xmlns:local="clr-namespace:BazyDanychProgram"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
+    <Window.Resources>
+        <SolidColorBrush x:Key="RedBrush" Color="Azure"/>
+        <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+        <SolidColorBrush x:Key="SelectedBrush" Color="#750104" />
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border 
+                                Name="Border"
+                                Margin="0,0,-4,0" 
+                                Background="{StaticResource RedBrush}"
+                                BorderBrush="{StaticResource  SolidBorderBrush}" 
+                                BorderThickness="1,1,1,1" 
+                                CornerRadius="10,10,2,2" >
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12,2,12,2"
+                                    RecognizesAccessKey="True"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource SelectedBrush}" />
+                                <Setter Property="Foreground" Value="Blue" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="1,1,1,0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Margin="15,10,5,0"  VerticalAlignment="Top" Width="772" Height="44">
+            Projekt : Wypożyczalnia
+        </Label>
+        <TabControl x:Name="tab" Margin="0,54,10,10" Background="White"  HorizontalAlignment="Right" Width="772">
+            <TabItem Header="X" Margin="10,0,-100,0" FontSize="14" FontWeight="Bold">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Procedura 1" Margin="512,0,-571,0" FontSize="14" FontWeight="Bold" RenderTransformOrigin="-0.62,0.214">
+                <Grid>
+                    <Label Content="Wybierz kategorię:" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" Margin="10,75,565,0"  VerticalAlignment="Top" Width="187" Height="28" />
+                    <TextBox  HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" Margin="10,11,10,0"  VerticalAlignment="Top" Width="742" Height="64" Text="Opis procedury: &#xD;&#xA;Procedura pobiera listę sprzętu w danej kategorii i jej podkategoriach - używając id_kategorii, &#xD;&#xA;przekazywanego jako parametr.&#xD;&#xA;"/>
+                    <ComboBox x:Name="comboBoxKategorie"  HorizontalAlignment="Left" Margin="197,76,0,0" VerticalAlignment="Top" Width="195" SelectionChanged="ComboBoxKategorieSelectionChanged">
+                    </ComboBox>
+                    <ListView x:Name="ProceduraWynikListView" Margin="-2,108,10,0" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="col1" Header="" Width="150px" DisplayMemberBinding="{Binding column1}" />
+                                <GridViewColumn x:Name="col2" Header="" Width="150px" DisplayMemberBinding="{Binding column2}" />
+                                <GridViewColumn x:Name="col3" Header="" Width="150px" DisplayMemberBinding="{Binding column3}" />
+                                <GridViewColumn x:Name="col4" Header="" Width="150px" DisplayMemberBinding="{Binding column4}" />
+                                <GridViewColumn x:Name="col5" Header="" Width="150px" DisplayMemberBinding="{Binding column5}" />
+                                <GridViewColumn x:Name="col6" Header="" Width="150px" DisplayMemberBinding="{Binding column6}" />
+                            </GridView>
+                        </ListView.View>
+                        
+                    </ListView>
+                </Grid>
+            </TabItem>
+
+
+
+        </TabControl>
+
+
     </Grid>
 </Window>
