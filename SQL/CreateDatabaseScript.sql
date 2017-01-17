@@ -59,8 +59,10 @@ CREATE TABLE Sprzet
 	data_zakupu date not NULL,
 	cena_zakupu decimal(9,2) null,
 	sprawnosc BIT NULL,
+	cena_za_godzine decimal(5,2) not null
 	CONSTRAINT Sprzet_kategoria_FK FOREIGN KEY(id_kat) REFERENCES Kategorie(id_kategorii),
-	CONSTRAINT sprzet_check_cena_zakupu CHECK( cena_zakupu>0)
+	CONSTRAINT sprzet_check_cena_zakupu CHECK( cena_zakupu>0),
+	CONSTRAINT sprzet_check_cena_za_godzine CHECK(cena_za_godzine>0)
 )
 
 GO
@@ -144,52 +146,52 @@ GO
 
 -- 10 sprawnych przedmiotów o najwiêkszej wartoœci ze wszystkich kategorii
 
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,1);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,0);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,1);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,1);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,0);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,1);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,1);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,0);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,1);
-INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na PSG Prestige 5','2014-03-01',79.99,1);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,1, 10.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,0, 10.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,1, 10.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,1, 10.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na halowa MAX 1000','2016-05-12',100.00,0, 10.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,1, 7.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,1, 7.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,0, 7.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na Team Training 5','2015-08-21',42.80,1, 7.00);
+INSERT INTO dbo.Sprzet VALUES (8,'Pi³ka no¿na PSG Prestige 5','2014-03-01',79.99,1, 9.00);
 
-INSERT INTO dbo.Sprzet VALUES (10,'Ochraniacze pi³karskie Evo Speed 5','2015-08-20',24.99,1);
-INSERT INTO dbo.Sprzet VALUES (10,'Ochraniacze pi³karskie Evo Speed 5','2015-08-10',24.99,0);
-INSERT INTO dbo.Sprzet VALUES (10,'Ochraniacze pi³karskie Predator Club','2015-07-10',37.99,1)
+INSERT INTO dbo.Sprzet VALUES (10,'Ochraniacze pi³karskie Evo Speed 5','2015-08-20',24.99,1, 5.00);
+INSERT INTO dbo.Sprzet VALUES (10,'Ochraniacze pi³karskie Evo Speed 5','2015-08-10',24.99,0, 5.00);
+INSERT INTO dbo.Sprzet VALUES (10,'Ochraniacze pi³karskie Predator Club','2015-07-10',37.99,1, 5.00)
 
-INSERT INTO dbo.Sprzet VALUES (12,'Torba Club Team Hardcase M 54L','2016-07-10',139.99,1)
-INSERT INTO dbo.Sprzet VALUES (12,'Torba pi³karska Trunk I 60L Spokey','2016-10-10',59.99,1)
+INSERT INTO dbo.Sprzet VALUES (12,'Torba Club Team Hardcase M 54L','2016-07-10',139.99,1, 15.00)
+INSERT INTO dbo.Sprzet VALUES (12,'Torba pi³karska Trunk I 60L Spokey','2016-10-10',59.99,1, 10.00)
 
-INSERT INTO dbo.Sprzet VALUES (9,'Pompka do pi³ki Spokey Pampero 12 81603','2016-07-10',12.99,1)
-INSERT INTO dbo.Sprzet VALUES (9,'Pompka do pi³ki Spokey Pampero 12 81603','2016-07-11',12.99,1)
-INSERT INTO dbo.Sprzet VALUES (9,'Pompka do pi³ki Spokey Pampero 12 81603','2016-07-10',12.99,0)
-INSERT INTO dbo.Sprzet VALUES (9,'Gwizdek sêdziowski','2016-10-15',29.99,1)
-INSERT INTO dbo.Sprzet VALUES (9,'Gwizdek sêdziowski','2016-10-14',29.99,1)
-INSERT INTO dbo.Sprzet VALUES (9,'Gwizdek sêdziowski','2016-10-15',29.99,1)
+INSERT INTO dbo.Sprzet VALUES (9,'Pompka do pi³ki Spokey Pampero 12 81603','2016-07-10',12.99,1, 2.00)
+INSERT INTO dbo.Sprzet VALUES (9,'Pompka do pi³ki Spokey Pampero 12 81603','2016-07-11',12.99,1, 2.00)
+INSERT INTO dbo.Sprzet VALUES (9,'Pompka do pi³ki Spokey Pampero 12 81603','2016-07-10',12.99,0, 2.00)
+INSERT INTO dbo.Sprzet VALUES (9,'Gwizdek sêdziowski','2016-10-15',29.99,1, 3.00)
+INSERT INTO dbo.Sprzet VALUES (9,'Gwizdek sêdziowski','2016-10-14',29.99,1, 3.00)
+INSERT INTO dbo.Sprzet VALUES (9,'Gwizdek sêdziowski','2016-10-15',29.99,1, 3.00)
 
-INSERT INTO dbo.Sprzet VALUES (19,'Siatka do siatkówki 82266','2016-01-15',49.99,1)
-INSERT INTO dbo.Sprzet VALUES (19,'Siatka do siatkówki 82266','2016-01-18',49.99,1)
-INSERT INTO dbo.Sprzet VALUES (19,'Siatka uniwersalna Telescop','2016-01-18',189.00,1)
-INSERT INTO dbo.Sprzet VALUES (19,'Siatka uniwersalna Telescop','2016-01-18',179.00,1)
+INSERT INTO dbo.Sprzet VALUES (19,'Siatka do siatkówki 82266','2016-01-15',49.99,1, 8.00)
+INSERT INTO dbo.Sprzet VALUES (19,'Siatka do siatkówki 82266','2016-01-18',49.99,1, 8.00)
+INSERT INTO dbo.Sprzet VALUES (19,'Siatka uniwersalna Telescop','2016-01-18',189.00,1, 16.00)
+INSERT INTO dbo.Sprzet VALUES (19,'Siatka uniwersalna Telescop','2016-01-18',179.00,1, 16.00)
 
-INSERT INTO dbo.Sprzet VALUES (14,'Manometr PGA10 Molten','2016-01-18',54.99,1)
-INSERT INTO dbo.Sprzet VALUES (14,'Manometr PGA10 Molten','2016-09-18',48.00,1)
+INSERT INTO dbo.Sprzet VALUES (14,'Manometr PGA10 Molten','2016-01-18',54.99,1, 5.00)
+INSERT INTO dbo.Sprzet VALUES (14,'Manometr PGA10 Molten','2016-09-18',48.00,1, 5.00)
 
-INSERT INTO dbo.Sprzet VALUES (16,'Liczyd³o do gier - tablica wyników','2015-01-18',74.99,1)
+INSERT INTO dbo.Sprzet VALUES (16,'Liczyd³o do gier - tablica wyników','2015-01-18',74.99,1, 10.00)
 
-INSERT INTO dbo.Sprzet VALUES (18,'Torba na 10-12 pi³ek Select','2015-01-10',69.99,1)
-INSERT INTO dbo.Sprzet VALUES (18,'Torba na 10-12 pi³ek Select','2015-12-10',79.99,1)
+INSERT INTO dbo.Sprzet VALUES (18,'Torba na 10-12 pi³ek Select','2015-01-10',69.99,1, 7.00)
+INSERT INTO dbo.Sprzet VALUES (18,'Torba na 10-12 pi³ek Select','2015-12-10',79.99,1, 7.00)
 
-INSERT INTO dbo.Sprzet VALUES (17,'Frotka Wristband','2015-09-10',15.99,1)
+INSERT INTO dbo.Sprzet VALUES (17,'Frotka Wristband','2015-09-10',15.99,1, 2.00)
 
-INSERT INTO dbo.Sprzet VALUES (7,'Kij baseballowy z aluminium Rucanor','2016-11-19',28.99,1)
-INSERT INTO dbo.Sprzet VALUES (7,'Kij baseballowy z aluminium Rucanor','2016-12-19',27.99,1)
-INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-12-19',48.99,1)
-INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu TS','2016-12-19',48.99,1)
-INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-02-19',75.99,1)
-INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-03-19',68.99,1)
+INSERT INTO dbo.Sprzet VALUES (7,'Kij baseballowy z aluminium Rucanor','2016-11-19',28.99,1, 7.00)
+INSERT INTO dbo.Sprzet VALUES (7,'Kij baseballowy z aluminium Rucanor','2016-12-19',27.99,1, 7.00)
+INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-12-19',48.99,1, 3.00)
+INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu TS','2016-12-19',48.99,1, 3.00)
+INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-02-19',75.99,1, 5.00)
+INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-03-19',68.99,1, 4.00)
 
 GO
 --********************* Tabela Wypozyczenia
@@ -249,3 +251,5 @@ GO
 --********************* Tabela Znizki ?
 
 --********************* Tabela Wypozyczenia
+
+select * from Sprzet
