@@ -2,6 +2,7 @@
 
 --1
 -- ID i nazwy kategorii wysokiego poziomu bez podkategorii posortowane rosn¹co wzglêdem nazwy
+use CentrumSportu
 
 Select id_kategorii, nazwa_kat from dbo.Kategorie as t1
  where id_kategoria_nadrzedna is null and
@@ -77,3 +78,36 @@ select count(id_sprzetu) as 'iloœæ' from dbo.Sprzet where datepart(year,data_zak
 -- w okresie 3 dni do przodu
 --  sprzêt, który nigdy nie by³ wypo¿yczony (móg³ byæ zarezerwowany itp)
 --itd
+
+-- 9 podaj id i nazwiska klientów, którzy wypo¿yczyli sprzêt z kategorii 'Pi³ki No¿ne' 
+select id_klienta, nazwisko from Klient where id_klienta in 
+(select id_klienta from Rezerwacje where id_wypozyczenia is not null and id_rezerwacji in 
+(select id_rezerwacji from Rezerwacja_Sprzet where id_sprzetu in (select id_sprzetu from Sprzet where id_kat = 8)))
+
+-- 10 podaæ ca³kowit¹ cenê za godzinê dla ka¿dej z rezerwacji
+select rs.id_rezerwacji, sum(s.cena_za_godzine) as oplata_za_godzine 
+from Rezerwacja_Sprzet rs left join Sprzet s on rs.id_sprzetu=s.id_sprzetu group by rs.id_rezerwacji
+
+-- 11 podaj id i nazwiska klientow, ktorzy maja wiecej niz jedna rezerwacje
+select distinct r.id_klienta, k.nazwisko from Rezerwacje r left join Klient k on k.id_klienta = r.id_klienta 
+where r.id_klienta in (select id_klienta from Rezerwacje where id_rezerwacji <> r.id_rezerwacji)
+
+-- 12 podac nazwiska wszystkich klientow, ktorzy utworzyli rezerwacje na wszystkie produkty z kategorii o id 21
+select nazwisko from Klient k 
+where not exists
+(select * from Sprzet s where id_kat in (select id_kat from Kategorie where id_kat=21 and not exists 
+(select * from Rezerwacja_Sprzet rs where rs.id_sprzetu = s.id_sprzetu 
+and rs.id_rezerwacji in (select id_rezerwacji from Rezerwacje r where r.id_klienta=k.id_klienta))))
+
+-- 13 podaæ przedmioty, które by³y rezerwowane co najmniej raz, ale nigdy nie by³y wypo¿yczone
+select s.* from Sprzet s right join Rezerwacja_Sprzet rs on s.id_sprzetu=rs.id_sprzetu 
+where id_rezerwacji in (select id_rezerwacji from Rezerwacje r where r.id_wypozyczenia is null)
+
+-- 14 podac sredni sredni stosunek ceny wypozyczenia na godzine do ceny_zakupu sprzetu w procentach wedlug kategorii
+select id_kat, cast(cast(avg(cena_za_godzine/cena_zakupu * 100) as decimal (3,1) ) as varchar) + '%' as sredni_procent from Sprzet group by id_kat
+
+-- 15 podaj id i nazwiska klientów, którzy wypozyczyli sprzet o lacznej wartosci wiekszej od 200
+select id_klienta, nazwisko from Klient where id_klienta in 
+(select id_klienta from Rezerwacje r where id_wypozyczenia is not null and 
+(select sum(s.cena_zakupu) from Rezerwacja_Sprzet rs left join Sprzet s on rs.id_sprzetu=s.id_sprzetu 
+where r.id_rezerwacji=rs.id_rezerwacji) > 200 )
