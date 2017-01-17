@@ -103,25 +103,47 @@ INSERT INTO dbo.Sprzet VALUES (7,'Pi³ka do baseballu','2016-03-19',68.99,1)
 --********************* Tabela Wypozyczenia
 INSERT INTO dbo.Wypozyczenia VALUES('2016-03-16 10:05', '2016-03-16 10:58', null);
 INSERT INTO dbo.Wypozyczenia VALUES('2016-03-20 10:02', '2016-03-20 11:01', null);
-
+INSERT INTO dbo.Wypozyczenia VALUES('2017-01-17 18:00', '2017-01-17 20:00', null);
+INSERT INTO dbo.Wypozyczenia VALUES('2016-12-29 10:03', '2016-12-29 13:10', null);
+INSERT INTO dbo.Wypozyczenia VALUES('2016-01-03 10:12', '2016-01-03 11:02', null);
+INSERT INTO dbo.Wypozyczenia VALUES('2016-01-05 18:07', '2016-01-05 20:17', null);
 --********************* Tabela Rezerwacje
 -- status: 
 -- typ rezerwacji
 --INSERT INTO dbo.Rezerwacje VALUES ()
+
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', 1);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', 2);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 0, '2017-01-17 18:00', '2017-01-17 20:00', 3);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-12-29 10:00', '2016-12-29 13:00', 4);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2017-01-03 10:00', '2016-01-03 11:00', 5);
+INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2017-01-05 18:00', '2016-01-05 20:00', 6);
 
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-28 10:00', '2017-02-28 13:00', null);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-18 12:00', '2017-01-18 13:00', null);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 08:00', '2017-01-25 12:00', null);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-02-28 18:00', '2017-02-28 20:00', null);
 INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-02-25 10:00', '2017-02-25 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-19 10:00', '2017-01-19 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 0, '2017-01-20 12:00', '2017-01-20 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('oczekuj¹ca', 1, '2017-01-25 10:00', '2017-01-25 12:00', null);
+
 INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-02-20 10:00', '2016-02-20 13:00', null);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-16 10:00', '2016-03-16 11:00', 1);
-INSERT INTO dbo.Rezerwacje VALUES ('zrealizowana', 1, '2016-03-20 10:00', '2016-03-20 11:00', 2);
 INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-20 10:00', '2017-03-20 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2016-12-20 10:00', '2016-12-20 13:00', null);
+INSERT INTO dbo.Rezerwacje VALUES ('anulowana', 0, '2017-03-01 10:00', '2017-03-01 13:00', null);
  
 
 --********************* Tabela Rezerwacja_Sprzet
-
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 1);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 6);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(1, 11);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(2, 1);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(2, 3);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(3, 4);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(4, 4);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(5, 1);
+INSERT INTO dbo.Rezerwacja_Sprzet VALUES(6, 6);
 
 --********************* Tabela Cennik ?
 
