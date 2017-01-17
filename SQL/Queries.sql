@@ -176,3 +176,4 @@ BEGIN
 END
 
 go
+select *, dbo.zwrocZyskZKlienta(id_klienta) from Klient
