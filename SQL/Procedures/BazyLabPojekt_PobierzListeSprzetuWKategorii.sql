@@ -1,4 +1,6 @@
 /*Procedura pobieraj¹ca listê sprzêtu w danej kategorii i jej podkategoriach - u¿ywaj¹c id_kategorii */
+Use CentrumSportu
+go
 CREATE PROCEDURE [BazyLabPojekt_PobierzListeSprzetuWKategorii] @id int
 AS
 BEGIN
