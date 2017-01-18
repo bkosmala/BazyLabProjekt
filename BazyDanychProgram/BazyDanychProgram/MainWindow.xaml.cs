@@ -38,6 +38,7 @@ namespace BazyDanychProgram
 
             comboBoxKategorieData();
             comboBoxKategorie.SelectedIndex = 1;
+            ListViewSprzetData();
         }
 
         public void comboBoxKategorieData()
@@ -75,12 +76,38 @@ namespace BazyDanychProgram
         private void Tab_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             comboBoxKategorieData();
+            ListViewSprzetData();
         }
 
         private void ComboBoxKategorieSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             comboBoxKategorieData();
 
+        }
+
+        public void ListViewSprzetData()
+        {
+            tabcol1.Header = "Id sprzętu";
+            tabcol2.Header = "Id kategorii";
+            tabcol3.Header = "Nazwa";
+            tabcol4.Header = "Data zakupu";
+            tabcol5.Header = "Cena zakupu";
+            tabcol6.Header = "Cena za godzinę";
+            List<Sprzet> wynik = repo.GetAllSprzet();
+            wynikProcedury = new ObservableCollection<Object>();
+            foreach (Sprzet k in wynik)
+            {
+                wynikProcedury.Add(new
+                {
+                    column1 = k.id_sprzetu,
+                    column2 = k.id_kat,
+                    column3 = k.nazwa,
+                    column4 = k.data_zakupu,
+                    column5 = k.cena_zakupu,
+                    column6 = k.cena_za_godzine,
+                });
+            }
+            TabelaWynikListView.ItemsSource = wynikProcedury;
         }
 
 

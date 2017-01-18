@@ -14,10 +14,10 @@ namespace BazyDanychProgram.Database.Models
         public DateTime data_zakupu { get; set; }
         public Decimal cena_zakupu { get; set; } //decimal?
         public bool sprawnosc { get; set; }
+        public decimal cena_za_godzine { get; set; }
 
 
         public Sprzet()
         { }
     }
 }
-

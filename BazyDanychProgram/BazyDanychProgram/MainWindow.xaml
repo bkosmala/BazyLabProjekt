@@ -49,12 +49,28 @@
             Projekt : Wypożyczalnia
         </Label>
         <TabControl x:Name="tab" Margin="0,54,10,10" Background="White"  HorizontalAlignment="Right" Width="772">
-            <TabItem Header="X" Margin="10,0,-100,0" FontSize="14" FontWeight="Bold">
+            <TabItem Header="Tabela Sprzęt" Margin="10,0,-100,0" FontSize="14" FontWeight="Bold">
                 <Grid>
+                   <!-- <Label Content="Wybierz kategorię:" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" Margin="10,75,565,0"  VerticalAlignment="Top" Width="187" Height="28" />-->
+                    <TextBox  HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" Margin="10,11,10,0"  VerticalAlignment="Top" Width="742" Height="64" Text="Opis: Wyświetlenie elementów tabeli Sprzęt"/>
+                   <!-- <ComboBox x:Name="comboBoxKategorie"  HorizontalAlignment="Left" Margin="197,76,0,0" VerticalAlignment="Top" Width="195" SelectionChanged="ComboBoxKategorieSelectionChanged">
+                    </ComboBox>-->
+                    <ListView x:Name="TabelaWynikListView" Margin="-2,108,10,0" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn x:Name="tabcol1" Header="" Width="150px" DisplayMemberBinding="{Binding column1}" />
+                                <GridViewColumn x:Name="tabcol2" Header="" Width="150px" DisplayMemberBinding="{Binding column2}" />
+                                <GridViewColumn x:Name="tabcol3" Header="" Width="150px" DisplayMemberBinding="{Binding column3}" />
+                                <GridViewColumn x:Name="tabcol4" Header="" Width="150px" DisplayMemberBinding="{Binding column4}" />
+                                <GridViewColumn x:Name="tabcol5" Header="" Width="150px" DisplayMemberBinding="{Binding column5}" />
+                                <GridViewColumn x:Name="tabcol6" Header="" Width="150px" DisplayMemberBinding="{Binding column6}" />
+                            </GridView>
+                        </ListView.View>
 
+                    </ListView>
                 </Grid>
             </TabItem>
-            <TabItem Header="Procedura 1" Margin="512,0,-571,0" FontSize="14" FontWeight="Bold" RenderTransformOrigin="-0.62,0.214">
+            <TabItem Header="Procedura 1" Margin="480,0,-539,0" FontSize="14" FontWeight="Bold" RenderTransformOrigin="-0.62,0.214">
                 <Grid>
                     <Label Content="Wybierz kategorię:" HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" Margin="10,75,565,0"  VerticalAlignment="Top" Width="187" Height="28" />
                     <TextBox  HorizontalAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" Margin="10,11,10,0"  VerticalAlignment="Top" Width="742" Height="64" Text="Opis procedury: &#xD;&#xA;Procedura pobiera listę sprzętu w danej kategorii i jej podkategoriach - używając id_kategorii, &#xD;&#xA;przekazywanego jako parametr.&#xD;&#xA;"/>

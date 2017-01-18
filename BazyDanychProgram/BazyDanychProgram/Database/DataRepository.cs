@@ -20,5 +20,10 @@ namespace BazyDanychProgram.Database
             return DatabaseOperations.GetCollectionProcedure<SprzetWKategorii>("BazyLabPojekt_PobierzListeSprzetuWKategorii", new { id = id_kat });
         }
 
+        public List<Sprzet> GetAllSprzet()
+        {
+            return DatabaseOperations.GetCollectionSQL<Sprzet>("Select * from dbo.Sprzet");
+        }
+
     }
 }
